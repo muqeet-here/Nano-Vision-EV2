@@ -12,7 +12,7 @@ while True:
         x2, y2 = int(df['xmax'][ind]), int(df['ymax'][ind])
         label = df['name'][ind]
         conf = df['confidence'][ind]
-        if float(conf.round(decimals=2)) >= 0.40:
+        if float(conf.round(decimals=2)) >= 0.20:
             if label == 'green':
                 # Crop the region around the detected green traffic light
                 roi = frame[y1:y2, x1:x2]
@@ -40,9 +40,19 @@ while True:
                     traffic_light_color = 'Red'
 
                 # Display the detected color
-                cv2.putText(frame, f'Traffic Light Color: {traffic_light_color}', (x1, y1 - 30),
+                cv2.putText(frame, f'Traffic Light: {traffic_light_color}', (x1, y1 - 30),
                             cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
+        if float(conf.round(decimals=2)) >= 0.70:
+            if label == 'Pothole':
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
+                cv2.putText(frame, label + ' ' + str(conf), (x1, y1 - 5), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+            if label == 'Speed Limit 100':
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
+                cv2.putText(frame, label + ' ' + str(conf), (x1, y1 - 5), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+            if label == 'Speed Limit 50':
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
+                cv2.putText(frame, label + ' ' + str(conf), (x1, y1 - 5), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
 
     # Display the frame with bounding boxes
     cv2.imshow('Video', frame)
