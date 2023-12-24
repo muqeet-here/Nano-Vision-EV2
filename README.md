@@ -1,6 +1,6 @@
 # Autonomous Car Project
 
-<img src="https://github.com/muqeet-here/Nano-Vision-EV/blob/main/Images/Cover.jpg" alt="Autonomous Car" style="width:820px; height:312px;">
+<img src="https://github.com/muqeet-here/Nano-Vision-EV2/blob/main/Images/Cover.jpg" alt="Autonomous Car" style="width:820px; height:312px;">
 
 ## Overview
 
